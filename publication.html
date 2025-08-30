@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Publications – Research Lab</title>
+  <style>
+    :root {
+      --bg: #fafafa;
+      --text: #1e293b;
+      --muted: #64748b;
+      --accent: #2563eb;
+      --accent2: #10b981;
+      --radius: 12px;
+      --shadow: 0 4px 12px rgba(0,0,0,0.08);
+      font-family: "Inter", system-ui, sans-serif;
+    }
+    body { margin:0; background:var(--bg); color:var(--text); }
+
+    /* Hero */
+    header {
+      background: linear-gradient(135deg, #2563eb, #10b981);
+      color:white; text-align:center;
+      padding:3rem 1.5rem;
+    }
+    header h1 { margin:0; font-size:2.2rem; font-weight:700; }
+    header p { margin-top:0.5rem; font-size:1.1rem; }
+
+    /* Logo strip */
+    .logo-strip {
+      display:flex; justify-content:center; flex-wrap:wrap;
+      gap:2rem; padding:2rem 1rem; background:white;
+      box-shadow:var(--shadow); border-radius:var(--radius);
+      max-width:1000px; margin:-2rem auto 2rem auto;
+    }
+    .logo-strip img {
+      height:40px; object-fit:contain;
+      filter:grayscale(30%);
+      transition:0.3s;
+    }
+    .logo-strip img:hover {
+      filter:none; transform:scale(1.05);
+    }
+
+    /* Tabs */
+    .tabs {
+      display:flex; justify-content:center; gap:1rem;
+      margin:2rem auto; flex-wrap:wrap;
+    }
+    .tab-btn {
+      padding:0.6rem 1.2rem;
+      border-radius:var(--radius);
+      border:none; cursor:pointer;
+      background:#e2e8f0; font-weight:500;
+      transition:0.3s;
+    }
+    .tab-btn:hover { background:#cbd5e1; }
+    .tab-btn.active {
+      background:var(--accent);
+      color:white;
+    }
+
+    /* Timeline */
+    .timeline {
+      position:relative;
+      margin:2rem auto;
+      padding-left:2rem;
+      max-width:800px;
+    }
+    .timeline::before {
+      content:"";
+      position:absolute;
+      left:12px; top:0; bottom:0;
+      width:3px;
+      background:#d1d5db;
+    }
+    .year-block {
+      margin-bottom:2rem;
+      position:relative;
+    }
+    .year-block::before {
+      content:"";
+      position:absolute;
+      left:-6px; top:0.5rem;
+      width:14px; height:14px;
+      background:var(--accent2);
+      border-radius:50%;
+      box-shadow:0 0 0 3px #fff;
+    }
+    .year-title {
+      font-weight:700; font-size:1.3rem;
+      margin-bottom:0.8rem;
+    }
+    ol { margin:0; padding-left:1.2rem; }
+    li {
+      margin-bottom:0.6rem;
+      padding:0.5rem 0.8rem;
+      background:white;
+      border-radius:var(--radius);
+      box-shadow:var(--shadow);
+      font-size:0.95rem;
+      line-height:1.4;
+    }
+
+    /* Footer */
+    footer {
+      text-align:center;
+      padding:1rem; margin-top:3rem;
+      font-size:0.9rem; color:var(--muted);
+      background:white;
+    }
+  </style>
+</head>
+<body>
+  <!-- Hero -->
+  <header>
+    <h1>Our Publications</h1>
+    <p>Journal Papers, Book Chapters, and Books from our Research Lab</p>
+  </header>
+
+  <!-- Frequent Journal Logos -->
+  <div class="logo-strip">
+    <img src="https://upload.wikimedia.org/wikipedia/commons/0/0c/Nature_Research_logo.png" alt="Nature">
+    <img src="https://upload.wikimedia.org/wikipedia/commons/6/65/Springer_logo.png" alt="Springer">
+    <img src="https://upload.wikimedia.org/wikipedia/commons/4/48/Elsevier_logo.png" alt="Elsevier">
+    <img src="https://upload.wikimedia.org/wikipedia/commons/d/d0/Wiley_logo.png" alt="Wiley">
+    <img src="https://upload.wikimedia.org/wikipedia/commons/6/6e/American_Chemical_Society_logo.png" alt="ACS">
+  </div>
+
+  <!-- Tabs -->
+  <div class="tabs">
+    <button class="tab-btn active" onclick="showTab('journals')">Journal Papers</button>
+    <button class="tab-btn" onclick="showTab('chapters')">Book Chapters</button>
+    <button class="tab-btn" onclick="showTab('books')">Books</button>
+  </div>
+
+  <!-- Journals -->
+  <section id="journals" class="timeline">
+    <div class="year-block">
+      <div class="year-title">2025</div>
+      <ol>
+        <li>A. Sharma, B. Gupta, <i>Journal of Materials Science</i>, 60, 2025.</li>
+        <li>R. Kumar, S. Singh, <i>Advanced Energy Materials</i>, 15(3), 2025.</li>
+      </ol>
+    </div>
+    <div class="year-block">
+      <div class="year-title">2024</div>
+      <ol>
+        <li>K. Das, M. Roy, <i>Nature Nanotechnology</i>, 18, 2024.</li>
+      </ol>
+    </div>
+  </section>
+
+  <!-- Chapters -->
+  <section id="chapters" class="timeline" style="display:none;">
+    <div class="year-block">
+      <div class="year-title">2023</div>
+      <ol>
+        <li>P. Verma, "Nanostructured Materials for Solar Cells", in <i>Advances in Nanotech</i>, Springer, 2023.</li>
+        <li>L. Yadav, "Battery Materials Innovation", in <i>Energy Storage Advances</i>, Elsevier, 2023.</li>
+      </ol>
+    </div>
+  </section>
+
+  <!-- Books -->
+  <section id="books" class="timeline" style="display:none;">
+    <div class="year-block">
+      <div class="year-title">2022</div>
+      <ol>
+        <li>M. Saha, <i>Functional Energy Materials</i>, Springer, 2022.</li>
+        <li>N. Bose, <i>Modern Physics of Materials</i>, Elsevier, 2022.</li>
+      </ol>
+    </div>
+  </section>
+
+  <footer>
+    © 2025 Functional & Energy Materials Research Lab — All Rights Reserved
+  </footer>
+
+  <script>
+    function showTab(tabId) {
+      document.querySelectorAll('section.timeline').forEach(sec => sec.style.display = "none");
+      document.getElementById(tabId).style.display = "block";
+      document.querySelectorAll('.tab-btn').forEach(btn => btn.classList.remove('active'));
+      event.target.classList.add('active');
+    }
+  </script>
+</body>
+</html>

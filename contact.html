@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Contact Us | Research Lab</title>
+  <style>
+    :root {
+      --bg: #f9fafb;
+      --text: #1f2937;
+      --muted: #6b7280;
+      --accent1: #3b82f6;
+      --accent2: #8b5cf6;
+      --radius: 16px;
+      --shadow: 0 8px 24px rgba(0,0,0,0.1);
+      font-family: "Inter", system-ui, sans-serif;
+    }
+    body { margin:0; background:var(--bg); color:var(--text); }
+
+    header {
+      text-align:center;
+      padding:3rem 1rem 2rem;
+      background:linear-gradient(135deg, var(--accent1), var(--accent2));
+      color:white;
+    }
+    header h1 {
+      margin:0;
+      font-size:2.5rem;
+      font-weight:800;
+    }
+    header p {
+      margin-top:0.75rem;
+      font-size:1.2rem;
+      opacity:0.9;
+    }
+
+    .container {
+      max-width:1100px;
+      margin:2rem auto;
+      padding:0 1.5rem;
+    }
+
+    /* Grid of info */
+    .info-grid {
+      display:grid;
+      grid-template-columns:repeat(auto-fit, minmax(260px,1fr));
+      gap:1.5rem;
+      margin-bottom:3rem;
+    }
+    .card {
+      background:white;
+      padding:1.5rem;
+      border-radius:var(--radius);
+      box-shadow:var(--shadow);
+      transition:transform 0.3s ease, box-shadow 0.3s ease;
+    }
+    .card:hover {
+      transform:translateY(-4px);
+      box-shadow:0 12px 30px rgba(0,0,0,0.15);
+    }
+    .card h3 {
+      margin:0 0 0.5rem;
+      font-size:1.2rem;
+      color:var(--accent1);
+    }
+    .card p {
+      margin:0.25rem 0;
+      font-size:1rem;
+      color:var(--muted);
+    }
+    .social a {
+      margin-right:0.8rem;
+      text-decoration:none;
+      color:var(--accent2);
+      font-weight:600;
+    }
+
+    /* Contact form */
+    form {
+      background:white;
+      padding:2rem;
+      border-radius:var(--radius);
+      box-shadow:var(--shadow);
+    }
+    form h2 {
+      margin-top:0;
+      margin-bottom:1rem;
+      font-size:1.5rem;
+      color:var(--accent1);
+    }
+    label {
+      display:block;
+      margin-top:1rem;
+      margin-bottom:0.3rem;
+      font-weight:600;
+      color:var(--text);
+    }
+    input, textarea {
+      width:100%;
+      padding:0.75rem;
+      border:1px solid #d1d5db;
+      border-radius:var(--radius);
+      font-size:1rem;
+    }
+    textarea { min-height:120px; }
+    button {
+      margin-top:1.5rem;
+      padding:0.75rem 1.5rem;
+      background:linear-gradient(135deg, var(--accent1), var(--accent2));
+      color:white;
+      border:none;
+      border-radius:var(--radius);
+      font-size:1rem;
+      cursor:pointer;
+      transition:opacity 0.3s ease;
+    }
+    button:hover { opacity:0.9; }
+
+    /* Map */
+    iframe {
+      width:100%;
+      height:350px;
+      border:0;
+      border-radius:var(--radius);
+      box-shadow:var(--shadow);
+      margin-top:2rem;
+    }
+
+    footer {
+      text-align:center;
+      padding:1.5rem;
+      margin-top:3rem;
+      font-size:0.9rem;
+      color:var(--muted);
+      background:white;
+      box-shadow: var(--shadow);
+    }
+  </style>
+</head>
+<body>
+  <!-- Hero -->
+  <header>
+    <h1>Contact Us</h1>
+    <p>Get in touch with the Functional & Energy Materials Research Lab</p>
+  </header>
+
+  <div class="container">
+    <!-- Contact Info -->
+    <div class="info-grid">
+      <div class="card">
+        <h3>Address</h3>
+        <p>Department of Physics</p>
+        <p>Central University of South Bihar</p>
+        <p>Gaya, Bihar, India - 824236</p>
+      </div>
+      <div class="card">
+        <h3>Email & Phone</h3>
+        <p>Email: femrl@cusb.ac.in</p>
+        <p>Phone: +91-631-1234567</p>
+      </div>
+      <div class="card">
+        <h3>Social Links</h3>
+        <p class="social">
+          <a href="#">Google Scholar</a>
+          <a href="#">ResearchGate</a>
+          <a href="#">Facebook</a>
+        </p>
+      </div>
+    </div>
+
+    <!-- Contact Form -->
+    <form>
+      <h2>Send us a message</h2>
+      <label for="name">Your Name</label>
+      <input type="text" id="name" placeholder="Enter your name" required>
+      
+      <label for="email">Your Email</label>
+      <input type="email" id="email" placeholder="Enter your email" required>
+      
+      <label for="message">Message</label>
+      <textarea id="message" placeholder="Write your message here..."></textarea>
+      
+      <button type="submit">Submit</button>
+    </form>
+
+    <!-- Map -->
+    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d29171.23146059329!2d84.997!3d24.795!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x39f32ca96f1234%3A0xa00f!2sCentral%20University%20of%20South%20Bihar!5e0!3m2!1sen!2sin!4v1680000000000"></iframe>
+  </div>
+
+  <footer>
+    © 2025 Functional & Energy Materials Research Lab — All Rights Reserved
+  </footer>
+</body>
+</html>

@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Lab Facilities - Research Laboratory</title>
+
+  <style>
+    /* =========================
+       Root Colors & Theme
+    ========================== */
+    :root {
+      --primary: #0077b6;      /* Blue */
+      --secondary: #ff6f61;    /* Coral Red */
+      --accent: #4caf50;       /* Green */
+      --bg: #f9f9fb;           /* Background */
+      --card-bg: #ffffff;      /* Card background */
+      --text-dark: #1a1a2e;    /* Dark text */
+      --text-light: #555;      /* Light text */
+      --shadow: 0 4px 15px rgba(0,0,0,0.1);
+      --radius: 16px;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: "Segoe UI", sans-serif;
+      background: var(--bg);
+      color: var(--text-dark);
+      line-height: 1.6;
+    }
+
+    header {
+      background: var(--primary);
+      color: #fff;
+      padding: 2rem 1rem;
+      text-align: center;
+      box-shadow: var(--shadow);
+    }
+
+    header h1 {
+      font-size: 2.5rem;
+      font-weight: bold;
+      margin-bottom: 0.5rem;
+    }
+
+    header p {
+      font-size: 1.1rem;
+      opacity: 0.9;
+    }
+
+    /* =========================
+       Facility Section Layout
+    ========================== */
+    .facilities {
+      max-width: 1200px;
+      margin: 2rem auto;
+      padding: 0 1.5rem;
+    }
+
+    .section-title {
+      text-align: center;
+      font-size: 2rem;
+      color: var(--secondary);
+      margin-bottom: 2rem;
+      position: relative;
+    }
+
+    .section-title::after {
+      content: "";
+      display: block;
+      width: 80px;
+      height: 4px;
+      background: var(--accent);
+      margin: 0.5rem auto 0;
+      border-radius: 2px;
+    }
+
+    .facility-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 2rem;
+    }
+
+    .facility-card {
+      background: var(--card-bg);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      overflow: hidden;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .facility-card:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+    }
+
+    .facility-card img {
+      width: 100%;
+      height: 200px;
+      object-fit: cover;
+      border-bottom: 4px solid var(--primary);
+    }
+
+    .facility-content {
+      padding: 1.2rem;
+    }
+
+    .facility-content h3 {
+      font-size: 1.3rem;
+      color: var(--primary);
+      margin-bottom: 0.5rem;
+    }
+
+    .facility-content p {
+      font-size: 0.95rem;
+      color: var(--text-light);
+    }
+
+    footer {
+      text-align: center;
+      background: var(--primary);
+      color: #fff;
+      padding: 1.5rem;
+      margin-top: 3rem;
+      font-size: 0.9rem;
+    }
+
+    /* =========================
+       Responsive
+    ========================== */
+    @media (max-width: 600px) {
+      header h1 {
+        font-size: 2rem;
+      }
+      .facility-content h3 {
+        font-size: 1.1rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- ===== Header ===== -->
+  <header>
+    <h1>Our Laboratory Facilities</h1>
+    <p>State-of-the-art instruments empowering cutting-edge research</p>
+  </header>
+
+  <!-- ===== Facilities Section ===== -->
+  <section class="facilities">
+    <h2 class="section-title">Available Equipment</h2>
+
+    <div class="facility-grid">
+      <!-- Facility 1 -->
+      <div class="facility-card">
+        <img src="machine1.jpg" alt="X-Ray Diffractometer">
+        <div class="facility-content">
+          <h3>X-Ray Diffractometer (XRD)</h3>
+          <p>Used for determining crystal structure, phase identification, and quantitative analysis of materials.</p>
+        </div>
+      </div>
+
+      <!-- Facility 2 -->
+      <div class="facility-card">
+        <img src="machine2.jpg" alt="Scanning Electron Microscope">
+        <div class="facility-content">
+          <h3>Scanning Electron Microscope (SEM)</h3>
+          <p>Provides high-resolution surface morphology imaging and elemental composition analysis with EDX.</p>
+        </div>
+      </div>
+
+      <!-- Facility 3 -->
+      <div class="facility-card">
+        <img src="machine3.jpg" alt="UV-Vis Spectrophotometer">
+        <div class="facility-content">
+          <h3>UV-Vis Spectrophotometer</h3>
+          <p>Measures optical absorbance, transmittance, and band gap of nanomaterials and thin films.</p>
+        </div>
+      </div>
+
+      <!-- Facility 4 -->
+      <div class="facility-card">
+        <img src="machine4.jpg" alt="Fourier Transform Infrared Spectrometer">
+        <div class="facility-content">
+          <h3>FTIR Spectrometer</h3>
+          <p>Analyzes functional groups and chemical bonding in organic and inorganic materials.</p>
+        </div>
+      </div>
+
+      <!-- Facility 5 -->
+      <div class="facility-card">
+        <img src="machine5.jpg" alt="Electrochemical Workstation">
+        <div class="facility-content">
+          <h3>Electrochemical Workstation</h3>
+          <p>Used for cyclic voltammetry, impedance spectroscopy, and studying energy storage devices.</p>
+        </div>
+      </div>
+
+      <!-- Facility 6 -->
+      <div class="facility-card">
+        <img src="machine6.jpg" alt="Thin Film Coater">
+        <div class="facility-content">
+          <h3>Thin Film Coater</h3>
+          <p>Used for preparing uniform thin films and coatings for device fabrication and testing.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== Footer ===== -->
+  <footer>
+    © 2025 Research Laboratory | All Rights Reserved
+  </footer>
+</body>
+</html>

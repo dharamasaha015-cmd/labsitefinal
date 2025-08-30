@@ -1,0 +1,371 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Professional Profile — Dr. Your Name</title>
+  <meta name="description" content="Professional academic/research profile page template." />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&family=Source+Serif+4:wght@300;400;600&display=swap" rel="stylesheet">
+  <style>
+    /* ------------------
+       Color palette (light theme, multicolor accents)
+       ------------------ */
+    :root{
+      --bg: #fbfdff;
+      --card: #ffffff;
+      --muted: #6b7280;
+      --accent-1: #7c3aed; /* purple */
+      --accent-2: #0ea5a4; /* teal */
+      --accent-3: #f97316; /* orange */
+      --glass: rgba(255,255,255,0.6);
+      --shadow: 0 8px 24px rgba(16,24,40,0.06);
+      --radius: 14px;
+      --max-width: 1100px;
+      --content-gap: 22px;
+      --section-pad: 22px;
+    }
+
+    /* Global reset & typography */
+    *{box-sizing:border-box}
+    html,body{height:100%}
+    body{
+      margin:0;
+      font-family: 'Inter', system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial;
+      background: linear-gradient(180deg, #ffffff 0%, #fbfdff 100%);
+      color:#0f172a;
+      -webkit-font-smoothing:antialiased;
+      -moz-osx-font-smoothing:grayscale;
+      line-height:1.45;
+      padding:36px 20px;
+    }
+
+    /* Page container */
+    .wrap{
+      max-width:var(--max-width);
+      margin:0 auto;
+      display:grid;
+      grid-template-columns: 340px 1fr;
+      gap: var(--content-gap);
+      align-items:start;
+    }
+
+    /* Sidebar card */
+    .sidebar{
+      background: linear-gradient(180deg, rgba(255,255,255,0.8), rgba(255,255,255,0.95));
+      border-radius: calc(var(--radius) - 2px);
+      padding:22px;
+      box-shadow: var(--shadow);
+      position:sticky;
+      top:28px;
+      height:fit-content;
+      border:1px solid rgba(15,23,42,0.04);
+    }
+
+    .profile-photo{
+      width:120px;height:120px;border-radius:18px;overflow:hidden;margin:0 auto 14px auto;box-shadow:0 6px 18px rgba(15,23,42,0.08);
+    }
+    .profile-photo img{width:100%;height:100%;object-fit:cover;display:block}
+
+    .name{font-size:20px;font-weight:700;text-align:center;margin:8px 0}
+    .title{font-size:13px;color:var(--muted);text-align:center;margin-bottom:12px}
+
+    .quick-meta{display:flex;flex-direction:column;gap:8px;margin-top:8px}
+    .meta-row{display:flex;justify-content:space-between;align-items:center;padding:8px;border-radius:10px;background:linear-gradient(180deg, rgba(250,250,253,0.8), rgba(255,255,255,0.6));border:1px solid rgba(15,23,42,0.03)}
+    .meta-label{font-size:13px;color:var(--muted)}
+    .meta-value{font-weight:600}
+
+    .contact-list{margin-top:12px;display:flex;flex-direction:column;gap:8px}
+    .contact-item{display:flex;gap:10px;align-items:center;font-size:13px;color:#0f172a;text-decoration:none}
+    .contact-item svg{width:18px;height:18px;opacity:0.9}
+
+    /* Social icons row */
+    .social-row{display:flex;gap:10px;justify-content:center;margin-top:14px}
+    .social-row a{display:inline-flex;align-items:center;justify-content:center;width:40px;height:40px;border-radius:10px;background:linear-gradient(180deg, rgba(255,255,255,0.9), rgba(250,250,255,0.9));border:1px solid rgba(15,23,42,0.03);box-shadow:0 4px 14px rgba(2,6,23,0.04);text-decoration:none}
+
+    /* Main content */
+    .main{
+      background:transparent;
+      min-height:200px;
+    }
+
+    .card{
+      background:var(--card);
+      border-radius:var(--radius);
+      padding: var(--section-pad);
+      box-shadow: var(--shadow);
+      border:1px solid rgba(15,23,42,0.04);
+      margin-bottom:18px;
+    }
+
+    header.hero{
+      display:flex;align-items:center;gap:18px;padding:18px;border-radius:12px;margin-bottom:12px;background:linear-gradient(90deg,var(--glass), rgba(250,250,255,0.9));border:1px solid rgba(15,23,42,0.03)
+    }
+
+    header .headline{flex:1}
+    .headline h1{margin:0;font-family:'Source Serif 4', serif;font-size:26px}
+    .headline p{margin:6px 0 0 0;color:var(--muted)}
+
+    .actions{display:flex;gap:12px}
+    .btn{display:inline-flex;align-items:center;gap:10px;padding:10px 14px;border-radius:10px;text-decoration:none;font-weight:600;border:1px solid rgba(15,23,42,0.06)}
+    .btn--primary{background:linear-gradient(90deg,var(--accent-1), #5b21b6);color:white}
+    .btn--outline{background:transparent}
+
+    /* two-column splits inside main */
+    .two-col{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+
+    h3.section-title{margin:0 0 12px 0;font-size:18px;color:#0f172a}
+
+    /* lists */
+    .timeline{display:flex;flex-direction:column;gap:12px}
+    .timeline-item{display:grid;grid-template-columns:120px 1fr;gap:12px;align-items:start}
+    .timeline-item .time{font-size:13px;color:var(--muted)}
+    .timeline-item .content h4{margin:0 0 6px 0;font-size:15px}
+    .timeline-item .content p{margin:0;color:var(--muted);font-size:14px}
+
+    /* badges */
+    .badge{display:inline-block;padding:6px 10px;border-radius:999px;font-weight:600;font-size:12px;background:linear-gradient(90deg,var(--accent-2), #34d399);color:white}
+
+    /* membership split */
+    .memberships{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+    .memberships ul{margin:0;padding:0;list-style:none}
+    .memberships li{padding:8px 0;border-bottom:1px dashed rgba(15,23,42,0.04)}
+
+    /* responsive */
+    @media (max-width:980px){
+      .wrap{grid-template-columns:1fr;}
+      .sidebar{position:relative;top:0}
+    }
+
+    @media (max-width:520px){
+      header.hero{flex-direction:column;align-items:flex-start}
+      .two-col{grid-template-columns:1fr}
+      .timeline-item{grid-template-columns:1fr}
+      .profile-photo{width:100px;height:100px}
+    }
+
+    /* print friendly tweaks */
+    @media print{
+      body{padding:0}
+      .wrap{max-width:100%;grid-template-columns:1fr}
+      .btn,.social-row{display:none}
+      .card{box-shadow:none;border:1px solid #eee}
+    }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <!-- SIDEBAR -->
+    <aside class="sidebar card" aria-labelledby="profile-name">
+      <div class="profile-photo" role="img" aria-label="Profile photo">
+        <!-- Replace the src below with the path to your photo (square recommended) -->
+        <img src="plogo.png" alt="Dr. Your Name">
+      </div>
+      <div class="name" id="profile-name">Dr. Your Name</div>
+      <div class="title">Associate Professor — Department of Physics</div>
+
+      <div class="quick-meta" aria-hidden="false">
+        <div class="meta-row"><div class="meta-label">Research areas</div><div class="meta-value">Materials Physics · Nanomaterials</div></div>
+        <div class="meta-row"><div class="meta-label">Location</div><div class="meta-value">Gaya, India</div></div>
+        <div class="meta-row"><div class="meta-label">ORCID</div><div class="meta-value"><a href="#" style="color:inherit;text-decoration:underline">0000-0000-0000-0000</a></div></div>
+      </div>
+
+      <div class="contact-list" aria-label="Contact details">
+        <a class="contact-item" href="mailto:youremail@institute.edu">
+          <!-- mail icon -->
+          <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M3 8.5v7A2.5 2.5 0 005.5 18h13A2.5 2.5 0 0021 15.5v-7" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/><path d="M21 8.5l-9 6.25L3 8.5" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          <span>youremail@institute.edu</span>
+        </a>
+        <a class="contact-item" href="tel:+911234567890">
+          <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M22 16.92V20a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6A19.79 19.79 0 012 4.18 2 2 0 014 2h3.09a2 2 0 012 1.72c.12 1.04.36 2.06.72 3.02a2 2 0 01-.45 2.11L8.91 11.09c1.58 3.1 4.1 5.62 7.2 7.2l1.24-1.47a2 2 0 012.11-.45c.96.36 1.98.6 3.02.72A2 2 0 0122 16.92z" stroke="currentColor" stroke-width="1.1" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          <span>+91 12345 67890</span>
+        </a>
+
+      </div>
+
+      <div class="social-row" aria-label="Social links">
+        <a href="#" title="Google Scholar" aria-label="Google Scholar">
+          <!-- simple G icon -->
+          <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><circle cx="12" cy="12" r="9" stroke="currentColor" stroke-width="1.2"/><text x="7.5" y="16" font-size="9" font-family="sans-serif">G</text></svg>
+        </a>
+        <a href="#" title="ResearchGate" aria-label="ResearchGate">
+          <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><rect x="3" y="5" width="18" height="14" rx="3" stroke="currentColor" stroke-width="1.2"/><path d="M7 12.5h3v4" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </a>
+        <a href="#" title="Facebook" aria-label="Facebook">
+          <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M15 8h2V5h-2a3 3 0 00-3 3v2H10v3h2v6h3v-6h2.5L18 11h-2v-1a1 1 0 011-1z" stroke="currentColor" stroke-width="1.1" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </a>
+      </div>
+
+      <div style="margin-top:14px;text-align:center">
+        <a class="btn btn--primary" href="#contact">Contact / Download CV</a>
+      </div>
+
+    </aside>
+
+    <!-- MAIN -->
+    <main class="main">
+
+      <div class="card hero" role="banner">
+        <div class="headline">
+          <h1>Dr. Your Name</h1>
+          <p>Associate Professor • Materials Physics • Nanomaterials • Energy Materials</p>
+          <div style="margin-top:10px;display:flex;gap:10px;flex-wrap:wrap">
+            <span class="badge">Ph.D., IIT City</span>
+            <span class="badge" style="background:linear-gradient(90deg,var(--accent-3), #fb923c)">H-index 18</span>
+            <span class="badge" style="background:linear-gradient(90deg,#60a5fa,#3b82f6)">100+ publications</span>
+          </div>
+        </div>
+        <div class="actions">
+          <a class="btn btn--outline" href="#education">Education</a>
+          <a class="btn btn--outline" href="#experience">Experience</a>
+        </div>
+      </div>
+
+      <!-- About / Summary -->
+      <section class="card" id="about">
+        <h3 class="section-title">Professional Summary</h3>
+        <p style="color:var(--muted);font-size:15px">An interdisciplinary researcher focused on functional and energy materials, with experience in synthesis, characterization and device prototyping. My work spans materials design for thermoelectric, photovoltaic, and magnetic applications. I supervise graduate students and collaborate with international labs on advanced instrumentation and modelling.</p>
+      </section>
+
+      <!-- Two column: Education & Experience -->
+      <section class="two-col">
+        <div class="card" id="education">
+          <h3 class="section-title">Education</h3>
+          <div class="timeline">
+            <div class="timeline-item">
+              <div class="time">2015 — 2019</div>
+              <div class="content">
+                <h4>Ph.D. Physics — IIT City</h4>
+                <p>Thesis: "Design and characterization of thermoelectric nanocomposites". Supervisor: Prof. A. Mentor.</p>
+              </div>
+            </div>
+
+            <div class="timeline-item">
+              <div class="time">2012 — 2014</div>
+              <div class="content">
+                <h4>M.Sc. Physics — University Name</h4>
+                <p>Specialization in Condensed Matter & Materials Science.</p>
+              </div>
+            </div>
+
+            <div class="timeline-item">
+              <div class="time">2009 — 2012</div>
+              <div class="content">
+                <h4>B.Sc. (Hons) Physics — College Name</h4>
+                <p>Graduated with First Class.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="card" id="experience">
+          <h3 class="section-title">Professional Experience</h3>
+          <div class="timeline">
+            <div class="timeline-item">
+              <div class="time">2022 — Present</div>
+              <div class="content">
+                <h4>Associate Professor — Department of Physics, Central University</h4>
+                <p>Teaching undergraduate and postgraduate courses; supervising PhD students; leading a research group on functional materials. Responsible for lab management and grant writing.</p>
+              </div>
+            </div>
+
+            <div class="timeline-item">
+              <div class="time">2019 — 2022</div>
+              <div class="content">
+                <h4>Postdoctoral Researcher — International Lab (Country)</h4>
+                <p>Worked on device-level integration of thermoelectric materials and co-authored multiple high-impact papers.</p>
+              </div>
+            </div>
+
+            <div class="timeline-item">
+              <div class="time">2017 — 2019</div>
+              <div class="content">
+                <h4>Research Fellow — Institute Name</h4>
+                <p>Materials synthesis, thin film growth and characterization.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Memberships and Teaching -->
+      <section class="card">
+        <div style="display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap">
+          <h3 class="section-title">Memberships & Teaching</h3>
+          <div style="color:var(--muted);font-size:13px">Updated: Aug 30, 2025</div>
+        </div>
+
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:18px;margin-top:12px">
+          <div>
+            <h4 style="margin:6px 0">International Memberships</h4>
+            <ul style="margin:0;padding-left:18px;color:var(--muted)">
+              <li>Member, International Materials Society (IMS)</li>
+              <li>Reviewer, Journal of Advanced Materials</li>
+              <li>Member, Thermoelectric Research Network</li>
+            </ul>
+
+            <h4 style="margin:12px 0 6px 0">National Memberships</h4>
+            <ul style="margin:0;padding-left:18px;color:var(--muted)">
+              <li>Life Member, Indian Physics Association</li>
+              <li>Member, National Academy of Sciences (Young Member)</li>
+            </ul>
+          </div>
+
+          <div>
+            <h4 style="margin:6px 0">Teaching Experience</h4>
+            <ul style="margin:0;padding-left:18px;color:var(--muted)">
+              <li>Advanced Solid State Physics — PG level (2022–present)</li>
+              <li>Materials Characterization Techniques — Lab course (2020–present)</li>
+              <li>Undergraduate Electromagnetism & Thermodynamics (2019–present)</li>
+            </ul>
+
+            <h4 style="margin:12px 0 6px 0">Invited Talks & Seminars</h4>
+            <ul style="margin:0;padding-left:18px;color:var(--muted)">
+              <li>"Nanoscale approaches for energy harvesting" — International Conference on Energy Materials, 2024</li>
+              <li>"Recent advances in thermoelectric composites" — National Symposium on Materials, 2023</li>
+              <li>"Characterization pathways for thin films" — Invited seminar, University XYZ, 2022</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <!-- Publications snippet and research interests -->
+      <section class="card">
+        <h3 class="section-title">Research Interests & Selected Publications</h3>
+        <p style="color:var(--muted)">Research interests: Thermoelectrics · Photovoltaics · Magnetic materials · Thin films · Nanocomposites · Device prototyping</p>
+
+        <h4 style="margin-top:12px;margin-bottom:8px">Selected recent publications</h4>
+        <ol style="color:var(--muted);padding-left:20px;margin-top:0">
+          <li>Author A., Author B., <strong>Dr. Your Name</strong>. "Title of paper on thermoelectric composites". Journal Name (2024).</li>
+          <li><strong>Dr. Your Name</strong>, Coauthor. "Thin film device integration". Advanced Materials (2023).</li>
+          <li>Author C., <strong>Dr. Your Name</strong>. "Magnetic nanoparticle synthesis". Materials Today (2022).</li>
+        </ol>
+      </section>
+
+      <!-- Footer / Contact -->
+      <section class="card" id="contact">
+        <h3 class="section-title">Contact & Links</h3>
+        <div style="display:flex;gap:18px;flex-wrap:wrap;align-items:center">
+          <div style="min-width:260px">
+            <p style="margin:0 0 6px 0;font-weight:600">Email</p>
+            <p style="margin:0 0 14px 0;color:var(--muted)"><a href="mailto:youremail@institute.edu">youremail@institute.edu</a></p>
+
+            <p style="margin:0 0 6px 0;font-weight:600">Phone</p>
+            <p style="margin:0 0 14px 0;color:var(--muted)">+91 12345 67890</p>
+          </div>
+
+          <div style="display:flex;flex-direction:column;gap:8px">
+            <a class="contact-item" href="#" title="Google Scholar">Google Scholar · <span style="color:var(--muted)">[link]</span></a>
+            <a class="contact-item" href="#" title="ResearchGate">ResearchGate · <span style="color:var(--muted)">[link]</span></a>
+            <a class="contact-item" href="#" title="Facebook">Facebook · <span style="color:var(--muted)">[link]</span></a>
+          </div>
+        </div>
+
+        <div style="margin-top:18px;color:var(--muted);font-size:13px">To download a printable CV or request collaboration, use the email above or click the Contact button at the top.</div>
+      </section>
+
+    </main>
+  </div>
+</body>
+</html>

@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Awards – Research Lab</title>
+  <style>
+    :root {
+      --bg: #f9fafb;
+      --text: #1e293b;
+      --muted: #64748b;
+      --accent: #2563eb;
+      --accent2: #10b981;
+      --radius: 14px;
+      --shadow: 0 4px 14px rgba(0,0,0,0.08);
+      font-family: "Inter", system-ui, sans-serif;
+    }
+    body { margin:0; background:var(--bg); color:var(--text); }
+
+    /* Hero */
+    header {
+      text-align:center;
+      padding:2.2rem 1.5rem 1rem;
+      background:white;
+      box-shadow: var(--shadow);
+    }
+    header h1 { margin:0; font-size:2.3rem; font-weight:700; color:var(--accent); }
+    header p { margin-top:0.5rem; font-size:1.1rem; color:var(--muted); }
+
+    /* Carousel below heading */
+    .carousel-container {
+      position:relative;
+      max-width:100%;
+      overflow:hidden;
+      height:420px;
+      margin-top:1rem;
+    }
+    .carousel-track {
+      display:flex;
+      transition: transform 0.6s ease-in-out;
+    }
+    .carousel-track img {
+      width:100%; object-fit:cover;
+    }
+    .carousel-btn {
+      position:absolute; top:50%; transform:translateY(-50%);
+      background:rgba(0,0,0,0.5); color:white;
+      border:none; border-radius:50%;
+      width:42px; height:42px; cursor:pointer;
+    }
+    .carousel-btn:hover { background:rgba(0,0,0,0.7); }
+    .prev { left:15px; }
+    .next { right:15px; }
+
+    /* Section titles */
+    h2 {
+      text-align:center;
+      font-size:1.7rem;
+      margin-top:3rem;
+      margin-bottom:1.5rem;
+      color:var(--accent);
+    }
+
+    /* Awards List */
+    .awards-container {
+      max-width:900px;
+      margin:0 auto;
+      padding:0 1rem;
+    }
+    .award-card {
+      background:white;
+      margin-bottom:1.2rem;
+      padding:1rem 1.2rem;
+      border-radius:var(--radius);
+      box-shadow:var(--shadow);
+      border-left:6px solid var(--accent2);
+      transition: transform 0.2s ease, box-shadow 0.3s ease;
+      display:flex;
+      align-items:flex-start;
+      gap:1rem;
+    }
+    .award-card:hover {
+      transform:translateY(-4px);
+      box-shadow:0 6px 18px rgba(0,0,0,0.12);
+    }
+    .award-icon {
+      font-size:1.6rem;
+      color:var(--accent2);
+      flex-shrink:0;
+    }
+    .award-content {
+      flex:1;
+    }
+    .award-title {
+      font-weight:600;
+      font-size:1rem;
+      margin:0 0 0.3rem;
+      color:var(--text);
+    }
+    .award-meta {
+      font-size:0.9rem;
+      color:var(--muted);
+    }
+
+    footer {
+      text-align:center;
+      padding:1rem; margin-top:3rem;
+      font-size:0.9rem; color:var(--muted);
+      background:white;
+      box-shadow: var(--shadow);
+    }
+  </style>
+</head>
+<body>
+  <!-- Hero -->
+  <header>
+    <h1>Awards & Recognitions</h1>
+    <p>Celebrating the honors received by our Principal Investigator and Lab Members</p>
+  </header>
+
+  <!-- Photo carousel -->
+  <div class="carousel-container">
+    <div class="carousel-track">
+      <img src="https://picsum.photos/id/1015/1500/420" alt="Award Ceremony 1">
+      <img src="https://picsum.photos/id/1016/1500/420" alt="Award Ceremony 2">
+      <img src="https://picsum.photos/id/1018/1500/420" alt="Award Ceremony 3">
+    </div>
+    <button class="carousel-btn prev">&#10094;</button>
+    <button class="carousel-btn next">&#10095;</button>
+  </div>
+
+  <!-- PI Awards -->
+  <h2>Principal Investigator Awards</h2>
+  <div class="awards-container">
+    <div class="award-card">
+      <div class="award-icon">🏆</div>
+      <div class="award-content">
+        <p class="award-title">National Research Excellence Award</p>
+        <p class="award-meta">Indian Science Academy — 2024</p>
+      </div>
+    </div>
+    <div class="award-card">
+      <div class="award-icon">🎖️</div>
+      <div class="award-content">
+        <p class="award-title">Fellow of the Royal Society of Chemistry</p>
+        <p class="award-meta">London, UK — 2024</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Members Awards -->
+  <h2>Lab Members Awards</h2>
+  <div class="awards-container">
+    <div class="award-card">
+      <div class="award-icon">🥇</div>
+      <div class="award-content">
+        <p class="award-title">Young Researcher Award</p>
+        <p class="award-meta">MRSI — A. Gupta — 2025</p>
+      </div>
+    </div>
+    <div class="award-card">
+      <div class="award-icon">📜</div>
+      <div class="award-content">
+        <p class="award-title">Best Poster Presentation</p>
+        <p class="award-meta">NanoTech Conference — R. Singh — 2025</p>
+      </div>
+    </div>
+    <div class="award-card">
+      <div class="award-icon">🏅</div>
+      <div class="award-content">
+        <p class="award-title">Best Thesis Award</p>
+        <p class="award-meta">Central University of South Bihar — P. Yadav — 2023</p>
+      </div>
+    </div>
+  </div>
+
+  <footer>
+    © 2025 Functional & Energy Materials Research Lab — All Rights Reserved
+  </footer>
+
+  <script>
+    const track = document.querySelector('.carousel-track');
+    const slides = Array.from(track.children);
+    const prevBtn = document.querySelector('.prev');
+    const nextBtn = document.querySelector('.next');
+    let index = 0;
+
+    function updateCarousel() {
+      track.style.transform = `translateX(${-index * 100}%)`;
+    }
+    function nextSlide() {
+      index = (index + 1) % slides.length;
+      updateCarousel();
+    }
+    function prevSlide() {
+      index = (index - 1 + slides.length) % slides.length;
+      updateCarousel();
+    }
+    nextBtn.addEventListener('click', nextSlide);
+    prevBtn.addEventListener('click', prevSlide);
+
+    // Auto-play
+    setInterval(nextSlide, 4000);
+  </script>
+</body>
+</html>

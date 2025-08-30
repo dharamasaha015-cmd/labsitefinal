@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Events – Research Lab</title>
+  <style>
+    :root {
+      --bg: #f8fafc;
+      --text: #1e293b;
+      --muted: #64748b;
+      --accent: #7c3aed;
+      --accent2: #06b6d4;
+      --accent3: #16a34a; /* outreach green */
+      --radius: 14px;
+      --shadow: 0 4px 14px rgba(0,0,0,0.08);
+      font-family: "Inter", system-ui, sans-serif;
+    }
+    body { margin:0; background:var(--bg); color:var(--text); }
+
+    /* Hero */
+    header {
+      text-align:center;
+      padding:2.5rem 1.5rem 2rem;
+      background:white;
+      box-shadow: var(--shadow);
+    }
+    header h1 { margin:0; font-size:2.4rem; font-weight:700; color:var(--accent); }
+    header p { margin-top:0.5rem; font-size:1.1rem; color:var(--muted); }
+
+    /* Filter tabs */
+    .filters {
+      display:flex;
+      justify-content:center;
+      gap:1rem;
+      margin:2rem auto;
+      flex-wrap:wrap;
+    }
+    .filter-btn {
+      background:white;
+      border:1px solid var(--accent2);
+      padding:0.5rem 1.2rem;
+      border-radius:var(--radius);
+      cursor:pointer;
+      font-weight:500;
+      color:var(--accent2);
+      transition:all 0.3s ease;
+    }
+    .filter-btn.active, .filter-btn:hover {
+      background:var(--accent2);
+      color:white;
+    }
+
+    /* Timeline */
+    .timeline {
+      max-width:900px;
+      margin:0 auto;
+      padding:0 1rem;
+      position:relative;
+    }
+    .timeline::before {
+      content:"";
+      position:absolute;
+      top:0;
+      left:20px;
+      width:4px;
+      height:100%;
+      background:linear-gradient(var(--accent), var(--accent2));
+      border-radius:4px;
+    }
+
+    .year {
+      font-size:1.4rem;
+      font-weight:600;
+      margin:2rem 0 1rem 60px;
+      color:var(--accent);
+    }
+
+    .event-card {
+      position:relative;
+      margin-left:60px;
+      margin-bottom:1.5rem;
+      background:white;
+      padding:1rem 1.2rem;
+      border-radius:var(--radius);
+      box-shadow:var(--shadow);
+      border-left:6px solid var(--accent);
+      transition: transform 0.2s ease, box-shadow 0.3s ease;
+    }
+    .event-card[data-type="seminar"] { border-left-color: var(--accent2); }
+    .event-card[data-type="workshop"] { border-left-color: #f97316; }
+    .event-card[data-type="outreach"] { border-left-color: var(--accent3); }
+
+    .event-card:hover {
+      transform:translateY(-4px);
+      box-shadow:0 6px 18px rgba(0,0,0,0.12);
+    }
+
+    .event-card::before {
+      content:"";
+      position:absolute;
+      top:20px;
+      left:-44px;
+      width:18px;
+      height:18px;
+      background:var(--accent);
+      border:3px solid white;
+      border-radius:50%;
+      box-shadow:var(--shadow);
+    }
+    .event-card[data-type="seminar"]::before { background: var(--accent2); }
+    .event-card[data-type="workshop"]::before { background: #f97316; }
+    .event-card[data-type="outreach"]::before { background: var(--accent3); }
+
+    .event-title {
+      font-weight:600;
+      font-size:1.1rem;
+      margin:0 0 0.3rem;
+    }
+    .event-meta {
+      font-size:0.9rem;
+      color:var(--muted);
+      margin-bottom:0.5rem;
+    }
+    .event-desc {
+      font-size:0.95rem;
+      color:var(--text);
+    }
+
+    footer {
+      text-align:center;
+      padding:1rem;
+      margin-top:3rem;
+      font-size:0.9rem;
+      color:var(--muted);
+      background:white;
+      box-shadow: var(--shadow);
+    }
+  </style>
+</head>
+<body>
+  <!-- Hero -->
+  <header>
+    <h1>Events & Outreach Programs</h1>
+    <p>Conferences, Seminars, Workshops, and Outreach Activities organized by our Lab</p>
+  </header>
+
+  <!-- Filters -->
+  <div class="filters">
+    <button class="filter-btn active" data-type="all">All</button>
+    <button class="filter-btn" data-type="conference">Conferences</button>
+    <button class="filter-btn" data-type="seminar">Seminars</button>
+    <button class="filter-btn" data-type="workshop">Workshops</button>
+    <button class="filter-btn" data-type="outreach">Outreach</button>
+  </div>
+
+  <!-- Timeline -->
+  <div class="timeline">
+    <div class="year">2025</div>
+    <div class="event-card" data-type="conference">
+      <p class="event-title">International Conference on Nanomaterials</p>
+      <p class="event-meta">January 2025 | New Delhi, India</p>
+      <p class="event-desc">A global gathering of researchers to discuss advancements in nanotechnology, organized by our lab in collaboration with DST.</p>
+    </div>
+    <div class="event-card" data-type="seminar">
+      <p class="event-title">Seminar on Energy Storage Materials</p>
+      <p class="event-meta">March 2025 | Central University of South Bihar</p>
+      <p class="event-desc">Invited talks from leading experts on the latest trends in battery and supercapacitor research.</p>
+    </div>
+    <div class="event-card" data-type="outreach">
+      <p class="event-title">School Outreach Program on Physics Experiments</p>
+      <p class="event-meta">April 2025 | Local Schools, Bihar</p>
+      <p class="event-desc">Our lab members visited local schools to demonstrate hands-on experiments and inspire students towards science and research.</p>
+    </div>
+
+    <div class="year">2024</div>
+    <div class="event-card" data-type="workshop">
+      <p class="event-title">Workshop on Scientific Writing</p>
+      <p class="event-meta">September 2024 | Gaya, Bihar</p>
+      <p class="event-desc">Hands-on training program for PhD and MSc students to improve research writing and publishing skills.</p>
+    </div>
+    <div class="event-card" data-type="conference">
+      <p class="event-title">National Physics Conference</p>
+      <p class="event-meta">June 2024 | Patna, Bihar</p>
+      <p class="event-desc">Our lab co-organized this conference to bring together physicists from across India.</p>
+    </div>
+    <div class="event-card" data-type="outreach">
+      <p class="event-title">Community Science Fair</p>
+      <p class="event-meta">December 2024 | Gaya, Bihar</p>
+      <p class="event-desc">An interactive fair for students and the public to explore science exhibitions prepared by our lab members.</p>
+    </div>
+  </div>
+
+  <footer>
+    © 2025 Functional & Energy Materials Research Lab — All Rights Reserved
+  </footer>
+
+  <script>
+    // Filtering logic
+    const filterBtns = document.querySelectorAll('.filter-btn');
+    const events = document.querySelectorAll('.event-card');
+
+    filterBtns.forEach(btn => {
+      btn.addEventListener('click', () => {
+        filterBtns.forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+        const type = btn.dataset.type;
+        events.forEach(event => {
+          if (type === 'all' || event.dataset.type === type) {
+            event.style.display = 'block';
+          } else {
+            event.style.display = 'none';
+          }
+        });
+      });
+    });
+  </script>
+</body>
+</html> 

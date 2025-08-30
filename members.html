@@ -1,0 +1,368 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Lab Members | Research Group</title>
+  <style>
+    /* ========== THEME COLORS ========== */
+    :root {
+      --bg: #f9fafb;
+      --card: #ffffff;
+      --primary: #2563eb;
+      --secondary: #10b981;
+      --accent: #f59e0b;
+      --text: #1f2937;
+      --muted: #6b7280;
+      --border: #e5e7eb;
+    }
+
+    body {
+      margin: 0;
+      font-family: "Segoe UI", Roboto, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+    }
+
+    /* Navbar */
+    nav {
+      position: sticky;
+      top: 0;
+      background: linear-gradient(90deg, var(--primary), var(--secondary));
+      padding: 1rem 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      z-index: 1000;
+    }
+
+    nav h1 {
+      color: white;
+      margin: 0;
+      font-size: 1.5rem;
+    }
+
+    nav ul {
+      list-style: none;
+      display: flex;
+      gap: 1rem;
+      margin: 0;
+      padding: 0;
+    }
+
+    nav ul li a {
+      color: white;
+      text-decoration: none;
+      font-weight: 500;
+      transition: opacity 0.3s;
+    }
+
+    nav ul li a:hover {
+      opacity: 0.7;
+    }
+
+    /* Search Bar */
+    .search-bar {
+      text-align: center;
+      padding: 1rem;
+    }
+
+    .search-bar input {
+      width: 60%;
+      max-width: 400px;
+      padding: 0.6rem 1rem;
+      border: 1px solid var(--border);
+      border-radius: 30px;
+      font-size: 1rem;
+    }
+
+    /* Section */
+    section {
+      padding: 2rem;
+    }
+
+    section h2 {
+      font-size: 2rem;
+      margin-bottom: 1.5rem;
+      border-left: 6px solid var(--accent);
+      padding-left: 0.5rem;
+      color: var(--primary);
+    }
+
+    /* Member Grid */
+    .member-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+      gap: 2rem;
+    }
+
+    .card {
+      background: var(--card);
+      border-radius: 1rem;
+      padding: 1.5rem;
+      text-align: center;
+      border: 1px solid var(--border);
+      box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+      cursor: pointer;
+      transition: transform 0.3s, box-shadow 0.3s;
+    }
+
+    .card:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 6px 16px rgba(0,0,0,0.12);
+    }
+
+    .card img {
+      width: 120px;
+      height: 120px;
+      object-fit: cover;
+      border-radius: 50%;
+      border: 3px solid var(--primary);
+      margin-bottom: 1rem;
+    }
+
+    .card h3 {
+      margin: 0.5rem 0;
+      font-size: 1.3rem;
+      color: var(--primary);
+    }
+
+    .card p.role {
+      font-weight: bold;
+      color: var(--secondary);
+      margin: 0.3rem 0;
+    }
+
+    .card p.topic {
+      font-size: 0.95rem;
+      color: var(--muted);
+    }
+
+    .card .contact {
+      margin-top: 1rem;
+      font-size: 0.9rem;
+    }
+
+    .contact a {
+      margin: 0 0.3rem;
+      text-decoration: none;
+      color: var(--accent);
+      font-weight: 500;
+    }
+
+    /* Modal (for detailed profile) */
+    .modal {
+      display: none;
+      position: fixed;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      background: rgba(0,0,0,0.6);
+      justify-content: center;
+      align-items: center;
+      z-index: 2000;
+    }
+
+    .modal-content {
+      background: var(--card);
+      border-radius: 1rem;
+      padding: 2rem;
+      width: 90%;
+      max-width: 600px;
+      text-align: center;
+      position: relative;
+      animation: fadeIn 0.3s ease-in-out;
+    }
+
+    .modal-content img {
+      width: 150px;
+      height: 150px;
+      border-radius: 50%;
+      margin-bottom: 1rem;
+      border: 4px solid var(--primary);
+    }
+
+    .close {
+      position: absolute;
+      top: 15px; right: 20px;
+      font-size: 1.5rem;
+      color: var(--muted);
+      cursor: pointer;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: scale(0.9);}
+      to { opacity: 1; transform: scale(1);}
+    }
+
+    footer {
+      background: var(--text);
+      color: #f9fafb;
+      padding: 1.5rem;
+      text-align: center;
+      font-size: 0.9rem;
+      margin-top: 2rem;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Navbar -->
+  <nav>
+    <h1>FEMRL Lab</h1>
+    <ul>
+      <li><a href="#phd">PhD Scholars</a></li>
+      <li><a href="#msc">MSc Students</a></li>
+      <li><a href="#phd-alumni">PhD Alumni</a></li>
+      <li><a href="#msc-alumni">MSc Alumni</a></li>
+    </ul>
+  </nav>
+
+  <!-- Search -->
+  <div class="search-bar">
+    <input type="text" id="searchInput" placeholder="Search members by name or topic...">
+  </div>
+
+  <!-- PhD Scholars -->
+  <section id="phd">
+    <h2>PhD Scholars</h2>
+    <div class="member-grid">
+      <div class="card" data-name="Aditi Sharma" data-topic="Energy storage materials">
+        <img src="phd1.jpg" alt="Profile Photo">
+        <h3>Aditi Sharma</h3>
+        <p class="role">PhD Scholar</p>
+        <p class="topic">Energy storage materials</p>
+        <div class="contact">
+          <a href="mailto:aditi@university.edu">Email</a>
+          <a href="#">Google Scholar</a>
+        </div>
+      </div>
+      <div class="card" data-name="Rahul Verma" data-topic="Photocatalysis semiconductors">
+        <img src="phd2.jpg" alt="Profile Photo">
+        <h3>Rahul Verma</h3>
+        <p class="role">PhD Scholar</p>
+        <p class="topic">Photocatalysis & semiconductors</p>
+        <div class="contact">
+          <a href="mailto:rahul@university.edu">Email</a>
+          <a href="#">ResearchGate</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- MSc Students -->
+  <section id="msc">
+    <h2>MSc Students</h2>
+    <div class="member-grid">
+      <div class="card" data-name="Priya Singh" data-topic="Nanostructured thin films">
+        <img src="msc1.jpg" alt="Profile Photo">
+        <h3>Priya Singh</h3>
+        <p class="role">MSc Student</p>
+        <p class="topic">Nanostructured thin films</p>
+      </div>
+      <div class="card" data-name="Ankit Mishra" data-topic="Magnetic alloys">
+        <img src="msc2.jpg" alt="Profile Photo">
+        <h3>Ankit Mishra</h3>
+        <p class="role">MSc Student</p>
+        <p class="topic">Magnetic properties of alloys</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- PhD Alumni -->
+  <section id="phd-alumni">
+    <h2>PhD Alumni</h2>
+    <div class="member-grid">
+      <div class="card" data-name="Sneha Reddy" data-topic="Advanced solar cells">
+        <img src="phd_alum1.jpg" alt="Profile Photo">
+        <h3>Sneha Reddy</h3>
+        <p class="role">PhD Alumni</p>
+        <p class="topic">Now: Assistant Professor, IIT Delhi</p>
+      </div>
+      <div class="card" data-name="Vivek Kumar" data-topic="Fuel cell catalysis">
+        <img src="phd_alum2.jpg" alt="Profile Photo">
+        <h3>Vivek Kumar</h3>
+        <p class="role">PhD Alumni</p>
+        <p class="topic">Now: Scientist, BARC</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- MSc Alumni -->
+  <section id="msc-alumni">
+    <h2>MSc Alumni</h2>
+    <div class="member-grid">
+      <div class="card" data-name="Kiran Patel" data-topic="Dielectric ceramics">
+        <img src="msc_alum1.jpg" alt="Profile Photo">
+        <h3>Kiran Patel</h3>
+        <p class="role">MSc Alumni</p>
+        <p class="topic">Now: PhD Student, NUS Singapore</p>
+      </div>
+      <div class="card" data-name="Rohit Das" data-topic="Graphene composites">
+        <img src="msc_alum2.jpg" alt="Profile Photo">
+        <h3>Rohit Das</h3>
+        <p class="role">MSc Alumni</p>
+        <p class="topic">Now: Scientist, DRDO</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Modal -->
+  <div id="profileModal" class="modal">
+    <div class="modal-content">
+      <span class="close">&times;</span>
+      <img id="modalImg" src="" alt="Profile">
+      <h3 id="modalName"></h3>
+      <p id="modalRole"></p>
+      <p id="modalTopic"></p>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <footer>
+    © 2025 Functional & Energy Materials Research Lab | Central University of South Bihar
+  </footer>
+
+  <!-- Script -->
+  <script>
+    // Modal logic
+    const cards = document.querySelectorAll(".card");
+    const modal = document.getElementById("profileModal");
+    const modalImg = document.getElementById("modalImg");
+    const modalName = document.getElementById("modalName");
+    const modalRole = document.getElementById("modalRole");
+    const modalTopic = document.getElementById("modalTopic");
+    const closeBtn = document.querySelector(".close");
+
+    cards.forEach(card => {
+      card.addEventListener("click", () => {
+        modal.style.display = "flex";
+        modalImg.src = card.querySelector("img").src;
+        modalName.textContent = card.querySelector("h3").textContent;
+        modalRole.textContent = card.querySelector(".role")?.textContent || "";
+        modalTopic.textContent = card.querySelector(".topic")?.textContent || "";
+      });
+    });
+
+    closeBtn.addEventListener("click", () => modal.style.display = "none");
+    window.addEventListener("click", (e) => {
+      if (e.target == modal) modal.style.display = "none";
+    });
+
+    // Search logic
+    const searchInput = document.getElementById("searchInput");
+    searchInput.addEventListener("keyup", () => {
+      let filter = searchInput.value.toLowerCase();
+      cards.forEach(card => {
+        let name = card.dataset.name.toLowerCase();
+        let topic = card.dataset.topic.toLowerCase();
+        if (name.includes(filter) || topic.includes(filter)) {
+          card.style.display = "block";
+        } else {
+          card.style.display = "none";
+        }
+      });
+    });
+  </script>
+</body>
+</html>

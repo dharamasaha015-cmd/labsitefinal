@@ -1,0 +1,557 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>FEMRL | Functional & Energy Materials Research Laboratory</title>
+  <meta name="description" content="Functional & Energy Materials Research Laboratory (FEMRL), Department of Physics, Central University of South Bihar, Gaya." />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
+  <style>
+    /* =====================
+       Light, Multicolor Premium Theme
+    ====================== */
+    :root {
+      /* Surfaces */
+      --bg: #aac8f5;            /* page background – light */
+      --surface: #eef7f6;        /* cards */
+      --surface-2: #f9f5fc;      /* soft striping */
+      --text: #0f172a;           /* primary text */
+      --muted: #4b5563;          /* secondary text */
+      --ring: rgba(69, 90, 100, .25);
+      --radius: 18px;
+      --shadow: 0 10px 30px rgba(17, 24, 39, .08), 0 2px 6px rgba(17, 24, 39, .06);
+      --maxw: 1240px;
+
+      /* A multicolor system (no monochrome!) */
+      --brand: #2563eb;          /* blue */
+      --brand-2: #8b5cf6;        /* violet */
+      --accent-cyan: #06b6d4;    /* cyan */
+      --accent-rose: #f43f5e;    /* rose */
+      --accent-amber: #f59e0b;   /* amber */
+      --accent-emerald: #10b981;  /* green */
+    }
+    * { box-sizing: border-box; }
+    html, body { height: 100%; }
+    body {
+      margin: 0; font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, Ubuntu, Cantarell, "Helvetica Neue", Arial, "Noto Sans";
+      color: var(--text);
+      background:
+        radial-gradient(800px 400px at 5% -10%, rgba(37,99,235,.08), transparent),
+        radial-gradient(800px 400px at 95% 110%, rgba(139,92,246,.08), transparent),
+        linear-gradient(180deg, #ffffff, var(--bg) 18%, #f5f8ff 60%, var(--bg) 100%);
+    }
+    a { color: inherit; text-decoration: none; }
+    img { max-width: 100%; display: block; }
+    .container { max-width: var(--maxw); margin: 0 auto; padding: 0 22px; }
+    .visually-hidden { position: absolute !important; height: 1px; width: 1px; overflow: hidden; clip: rect(1px, 1px, 1px, 1px); white-space: nowrap; }
+
+    /* Utilities */
+    .btn { display:inline-flex; align-items:center; gap:.6rem; padding:.85rem 1rem; border-radius: 12px; font-weight:700; border:1px solid rgba(17,24,39,.08); background: #fff; box-shadow: var(--shadow); transition: transform .15s ease, box-shadow .2s ease; }
+    .btn:hover { transform: translateY(-1px); box-shadow: 0 14px 36px rgba(17,24,39,.12); }
+    .btn-primary { background: linear-gradient(135deg, var(--brand), var(--brand-2)); border-color: transparent; color:#fff; }
+    .btn-ghost { background: var(--surface-2); }
+    .chip { display:inline-flex; align-items:center; gap:.45rem; padding:.45rem .7rem; border-radius:999px; border:1px solid rgba(17,24,39,.08); background: #fff; }
+    .tag { display:inline-block; padding:.35rem .6rem; border-radius:999px; background: #eef2ff; color:#4338ca; border:1px solid #e0e7ff; font-size:.85rem; }
+    .badge { padding:.25rem .55rem; border-radius: 8px; font-size:.78rem; font-weight:700; }
+    .b-rose { background:#fee2e2; color:#b91c1c; }
+    .b-amber { background:#fef3c7; color:#92400e; }
+    .b-emerald { background:#d1fae5; color:#065f46; }
+    .b-cyan { background:#cffafe; color:#155e75; }
+
+    .card { background: var(--surface); border: 1px solid rgba(17,24,39,.08); border-radius: var(--radius); box-shadow: var(--shadow); }
+    .grid { display:grid; gap: 2px; }
+
+    /* HEADER / NAV */
+    header.site-header { position: sticky; top: 0; right :0; z-index: 50; backdrop-filter: blur(8px); background: rgba(255,255,255,.8); border-bottom: 1px solid rgba(17,24,39,.08); }
+    .topbar { display:flex; align-items:center; justify-content:space-between; padding: 2px 0; }
+    .brand { display:flex; align-items:center; gap: 0px; }
+    .brand-logos { display:flex; align-items:center; gap: 02px; }
+    .brand-logos img { height: 52px; width: 52px; object-fit: cover; border-radius: 12px; border:1px solid rgba(17,24,39,.12); background:#fff; }
+    .brand-text h1 { margin:0; font-family: "Playfair Display", serif; letter-spacing:.2px; font-weight:700; font-size: .95rem; }
+    .brand-text p { margin: 0rem 0 0; color: var(--muted); font-size:.92rem; }
+
+    .actions { display:flex; align-items:center; gap: 5px; }
+    .search { position: relative; }
+    .search input { background: var(--surface-2); color: var(--text); border:1px solid rgba(17,24,39,.12); height: 44px; border-radius: 10px; padding: 0 42px 0 12px; width: 300px; }
+    .search button { position:absolute; right:6px; top:50%; transform:translateY(-50%); border:none; height: 30px; width: 30px; border-radius: 8px; background: linear-gradient(135deg, var(--brand), var(--brand-2)); color:#fff; }
+
+    nav.menu { display:flex; gap: 4px; flex-wrap: wrap; padding: 4px 0 4px; }
+    nav.menu a { font-size: .7rem ;padding:.1rem .1rem; border-radius: 1px; color:#0f172a; font-weight:9700; letter-spacing:.5px; border:2px solid transparent; }
+    nav.menu a:hover, nav.menu a.active { font-size: .7rem;background: #eef2ff; border-color: #e0e7ff; color:#1e3a8a; }
+
+    /* Multicolor menu highlight */
+    nav.menu a[data-color="rose"].active { background:#ffe4e6; border-color:#fecdd3; color:#9f1239; }
+    nav.menu a[data-color="amber"].active { background:#fef3c7; border-color:#fde68a; color:#92400e; }
+    nav.menu a[data-color="emerald"].active { background:#d1fae5; border-color:#a7f3d0; color:#065f46; }
+
+    /* HERO */
+    .hero { position: relative; padding: 7px 0 8px; overflow: hidden; }
+    .hero .content { position:relative; }
+    .hero .decor { position:absolute; inset: -60px -60px auto auto; height: 260px; width: 260px; background: radial-gradient(closest-side, rgba(6,182,212,.28), transparent); filter: blur(10px); border-radius: 999px; pointer-events: none; }
+    .hero .decor2 { position:absolute; inset: auto auto -80px -40px; height: 320px; width: 320px; background: radial-gradient(closest-side, rgba(244,63,94,.22), transparent); filter: blur(12px); border-radius: 999px; pointer-events: none; }
+    .hero h2 { margin: 0; font-family: "Playfair Display", serif; font-size: clamp(2rem, 3vw + 1rem, 3.2rem); line-height: 1.05; }
+    .hero p.lead { color: #334155; font-size: 1.12rem; max-width: 960px; }
+    .hero .hero-band { margin-top:18px; display:flex; gap:12px; flex-wrap:wrap; }
+    .hero-logos { display:flex; gap:10px; align-items:center; }
+    .hero-logos img { height: 60px; width: 60px; object-fit: cover; border-radius: 14px; border:1px solid rgba(17,24,39,.12); }
+
+    /* Announcement ticker */
+    .ticker { margin-top: 2px; display:flex; align-items:center; gap:0px; padding:8px; border-radius: 12px; background: #ffeded; border:1px solid rgba(17,24,39,.08); box-shadow: var(--shadow); }
+    .ticker .dot { height:10px; width:10px; border-radius:999px; background: var(--accent-emerald); box-shadow:0 0 0 6px rgba(16,185,129,.18); }
+    .ticker .marquee { overflow:hidden; white-space:nowrap; }
+    .ticker .marquee span { display:inline-block; padding-left: 100%; animation: marquee 18s linear infinite; }
+    @keyframes marquee { 0% { transform: translateX(0); } 100% { transform: translateX(-100%); } }
+
+    /* Sections */
+    section { padding: 2px 0; }
+    section.alt { background: linear-gradient(180deg, #ffffff, #fdfbff); }
+    section .section-head { display:flex; align-items:end; justify-content:space-between; gap:6px; margin-bottom: 24px; }
+    .section-title { font-family: "Playfair Display", serif; font-size: 1.25rem; margin:0; }
+    .section-sub { color: var(--muted); margin:6px 0 0; }
+
+    /* News */
+    .news-grid { display:grid; grid-template-columns: 1.4fr .2fr; gap: 1px; }
+    .news-list { display:grid; gap: 12px; }
+    .news-item { display:grid; grid-template-columns: 100px 1fr auto; gap: 14px; padding: 16px; border-radius: 16px; border:1px solid rgba(17,24,39,.08); background: #fff; }
+    .news-item .date { text-align:center; background: #e0f2fe; border:1px solid #bae6fd; border-radius: 12px; padding: 10px 8px; font-weight:900; color:#0c4a6e; }
+    .news-item .date .d { display:block; font-size:.7rem; }
+    .news-item .date .m { display:block; font-size:.75rem; letter-spacing:.4px; }
+    .news-item h4 { margin: 0 0 .3rem; font-size:1.08rem; }
+    .news-item p { margin:0; color: var(--muted); }
+    .news-item .actions { align-self:center; }
+
+    .side-panel { padding: 10px; border-radius: 18px; border:1px solid rgba(17,24,39,.08); background: linear-gradient(180deg, #ffffff, #f7fbff); box-shadow: var(--shadow); }
+    .side-panel h3 { margin: 0 0 10px; font-size: 0.5rem; }
+    .bullet { display:flex; align-items:flex-start; gap:10px; padding:5px 0; border-bottom:1px dashed rgba(17,24,39,.1); }
+    .bullet:last-child { border-bottom: none; }
+    .bullet i { flex:0 0 auto; height: 10px; width: 10px; border-radius: 3px; background: linear-gradient(135deg, var(--brand), var(--brand-2)); margin-top: .45rem; }
+
+    /* Research Interests */
+    .interest-card { padding:9px; border-top: 10px solid #a78bfa; }
+    .interest-card:nth-child(1){ border-top-color:#60a5fa; }
+    .interest-card:nth-child(2){ border-top-color:#fb7185; }
+    .interest-card:nth-child(3){ border-top-color:#34d399; }
+    .interest-card:nth-child(4){ border-top-color:#fbbf24; }
+    .interest-card:nth-child(5){ border-top-color:#06b6d4; }
+
+    /* Objectives */
+    .objective { padding:18px; display:flex; gap:12px; align-items:flex-start; background: linear-gradient(180deg, #ffffff, #fefce8); border:1px solid #fde68a; }
+    .objective i { flex:0 0 auto; height: 30px; width: 30px; border-radius: 10px; display:inline-flex; align-items:center; justify-content:center; background: #fff; border:1px solid #fbbf24; font-weight:800; }
+
+    /* Funding */
+    .funding-grid { display:grid; grid-template-columns: repeat(4, 1fr); gap: 18px; }
+    .funder { padding: 16px; text-align:center; background: #fff; border: 1px solid rgba(17,24,39,.08); border-radius: 16px; box-shadow: var(--shadow); }
+    .funder img { height: 54px; margin: 4px auto 10px; filter: saturate(1) contrast(1); }
+    .funder p { margin:0; color: var(--muted); font-size:.95rem; }
+
+    /* Extras: stats, FAQ, newsletter */
+    .stats { display:grid; grid-template-columns: repeat(4, 1fr); gap: 18px; }
+    .stat { text-align:center; padding: 22px; background:#fff; border:1px solid rgba(17,24,39,.08); border-radius:16px; box-shadow:var(--shadow); }
+    .stat h2 { margin:0; font-size: 2rem; }
+    .accordion { display:grid; gap:10px; }
+    .acc { background:#fff; border:1px solid rgba(17,24,39,.1); border-radius:14px; }
+    .acc summary { list-style:none; cursor:pointer; padding:14px 16px; font-weight:700; }
+    .acc p { margin:0; padding: 0 16px 16px; color: var(--muted); }
+
+    /* Footer */
+    footer { margin-top: 40px; padding: 50px 0 80px; background: linear-gradient(180deg, #ffffff, #f8fbff); border-top:1px solid rgba(17,24,39,.08); }
+    .footer-grid { display:grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 20px; }
+    .foot h4 { margin-top:0; }
+    .foot ul { list-style:none; padding:0; margin:0; }
+    .foot li { margin: .45rem 0; color: var(--muted); }
+    .copyright { margin-top: 24px; padding-top: 18px; border-top: 1px solid rgba(17,24,39,.08); color: var(--muted); font-size:.9rem; display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; gap:12px; }
+
+    /* Responsive */
+    @media (max-width: 1080px) {
+      .news-grid { grid-template-columns: 1fr; }
+      .funding-grid { grid-template-columns: repeat(3, 1fr); }
+      .footer-grid { grid-template-columns: 1fr 1fr 1fr; }
+      .stats { grid-template-columns: repeat(2, 1fr); }
+    }
+    @media (max-width: 820px) {
+      .brand-text h1 { font-size: 1.05rem; }
+      .search input { width: 240px; }
+      .funding-grid { grid-template-columns: repeat(2, 1fr); }
+    }
+    @media (max-width: 640px) {
+      nav.menu { overflow-x:auto; white-space:nowrap; padding-bottom: 10px; }
+      .topbar { flex-direction: column; align-items: flex-start; gap:10px; }
+      .actions { width: 100%; gap:8px; }
+      .actions .search { flex: 1; width: 100%; }
+      .search input { width: 100%; }
+      .footer-grid { grid-template-columns: 1fr; }
+      .stats { grid-template-columns: 1fr; }
+    }
+
+    /* Focus & a11y */
+    :focus-visible { outline: 3px solid var(--brand); outline-offset: 2px; }
+  </style>
+</head>
+<body>
+  <!-- ===================== HEADER ===================== -->
+  <header class="site-header">
+    <div class="container">
+      <div class="topbar">
+        <div class="brand">
+          <div class="brand-logos" aria-label="Lab and University logos">
+            <!-- Replace src with real logo paths -->
+            
+            <img src="lablogo.png" alt="FEMRL Lab Logo" title="Lab Logo" />
+          </div>
+          <div class="brand-text">
+            <h1>Functional & Energy Materials Research Laboratory (FEMRL)</h1>
+            <p>Department of Physics • Central University of South Bihar, Gaya</p>
+          </div>
+        </div>
+        <div class="actions">
+          
+        </div>
+      </div>
+      <nav class="menu" aria-label="Primary">
+        <!-- Navigation goes to separate pages (not designed here) -->
+        <a class="active" data-color="emerald" href="#home">Home</a>
+        <a data-color="rose" href="profile.html">Profile</a>
+        <a data-color="amber" href="members.html">Members</a>
+        <a data-color="emerald" href="research.html">Research</a>
+        <a data-color="rose" href="facilities.html">Facilities</a>
+        <a data-color="amber" href="projects.html">Research Projects</a>
+        <a data-color="emerald" href="publication.html">Publications</a>
+        <a data-color="rose" href="awards.html">Awards</a>
+        <a data-color="amber" href="events.html">Events Organized</a>
+        <a data-color="emerald" href="events.html">Outreach Activities</a>
+        <a data-color="rose" href="gallery.html">Gallery</a>
+        <a data-color="amber" href="contact.html">Contact</a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- ===================== HERO (Homepage only) ===================== -->
+  <section id="home" class="hero">
+    <div class="decor" aria-hidden="true"></div>
+    <div class="decor2" aria-hidden="true"></div>
+    <div class="container content">
+
+      <!-- Announcement ticker -->
+      <div class="ticker" aria-live="polite" aria-label="Latest announcements">
+        <span class="dot" aria-hidden="true"></span>
+        <div class="marquee"><span id="marqueeText">Application open for JRF (Materials Physics) • New paper accepted in <em>Advanced Functional Materials</em> • Workshop on Advanced Characterization, 14–16 Oct • Congratulations to our PhD scholars for Best Poster Awards!</span></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== NEWS & ANNOUNCEMENTS ===================== -->
+  <section id="news" class="alt">
+    <div class="container">
+      <div class="section-head">
+        <div>
+          <h3 class="section-title">News & Announcements</h3>
+          <p class="section-sub">Important updates, events and highlights from FEMRL.</p>
+        </div>
+
+      </div>
+      <div class="news-grid">
+        <div class="news-list" id="newsList">
+          <!-- Repeatable news items -->
+          <article class="news-item card" data-type="Hiring" data-keywords="jrf hiring recruitment serb">
+            <div class="date"><span class="d">25</span><span class="m">AUG</span></div>
+            <div>
+              <h4>JRF Position in Energy Materials (1 post)</h4>
+              <p>Applications invited for a JRF under SERB-funded project on solid-state electrolytes. Deadline: 15 Sep 2025.</p>
+              <div class="badge b-emerald" style="margin-top:8px;">Hiring</div>
+            </div>
+            <div class="actions"><button class="btn save-btn" aria-label="Save news">★ Save</button></div>
+          </article>
+          <article class="news-item card" data-type="Publications" data-keywords="publication perovskite battery journal">
+            <div class="date"><span class="d">18</span><span class="m">AUG</span></div>
+            <div>
+              <h4>New Publication on Defect-Tolerant Perovskites</h4>
+              <p>Our latest work on defect passivation in halide perovskites is accepted in <em>Advanced Functional Materials</em>.</p>
+              <div class="badge b-cyan" style="margin-top:8px;">Publication</div>
+            </div>
+            <div class="actions"><button class="btn save-btn">★ Save</button></div>
+          </article>
+          <article class="news-item card" data-type="Events" data-keywords="workshop conference training characterization">
+            <div class="date"><span class="d">05</span><span class="m">JUL</span></div>
+            <div>
+              <h4>Hands‑on Workshop: Advanced Characterization</h4>
+              <p>Three‑day workshop featuring XRD, XPS, SEM/TEM, and electrochemical techniques. Seats limited.</p>
+              <div class="badge b-amber" style="margin-top:8px;">Event</div>
+            </div>
+            <div class="actions"><button class="btn save-btn">★ Save</button></div>
+          </article>
+          <article class="news-item card" data-type="Events" data-keywords="workshop conference training characterization">
+            <div class="date"><span class="d">05</span><span class="m">JUL</span></div>
+            <div>
+              <h4>Hands‑on Workshop: Advanced Characterization</h4>
+              <p>Three‑day workshop featuring XRD, XPS, SEM/TEM, and electrochemical techniques. Seats limited.</p>
+              <div class="badge b-amber" style="margin-top:8px;">Event</div>
+            </div>
+            <div class="actions"><button class="btn save-btn">★ Save</button></div>
+          
+        
+    </div>
+  </section>
+
+  <!-- ===================== RESEARCH INTERESTS ===================== -->
+  <section id="research-interests">
+    <div class="container">
+      <div class="section-head">
+        <div>
+          <h3 class="section-title">RESEARCH INTEREST</h3>
+          <p class="section-sub">Our work spans synthesis, characterization and device physics of advanced materials.</p>
+        </div>
+        <span class="tag">Color-coded categories</span>
+      </div>
+
+      <div class="grid" style="grid-template-columns: repeat(3, 1fr);">
+        <div class="card interest-card">
+          <h4>Perovskites & Optoelectronics</h4>
+          <p>Low‑defect halide perovskites for solar cells, LEDs, and photodetectors; stability engineering and ion migration.</p>
+          <div class="badge b-cyan">Optoelectronics</div>
+        </div>
+        <div class="card interest-card">
+          <h4>High‑Entropy Alloys & Oxides</h4>
+          <p>Configurational entropy effects, sluggish diffusion, catalytic activity for OER/HER, and structural disorder.</p>
+          <div class="badge b-rose">HEAs</div>
+        </div>
+        <div class="card interest-card">
+          <h4>Energy Storage Materials</h4>
+          <p>Solid‑state electrolytes, Na‑ion and Li‑ion cathodes, interface physics, and dendrite suppression.</p>
+          <div class="badge b-emerald">Batteries</div>
+        </div>
+        <div class="card interest-card">
+          <h4>2D Materials & Heterostructures</h4>
+          <p>MoS₂, graphene, MXenes for sensing and catalysis; defect engineering and strain‑tunable properties.</p>
+          <div class="badge b-amber">2D</div>
+        </div>
+        <div class="card interest-card">
+          <h4>Electrocatalysis & Interfaces</h4>
+          <p>Design of active sites, d‑band tuning, and charge transfer kinetics for HER/OER/ORR/CO₂RR.</p>
+          <div class="badge b-cyan">Electrocatalysis</div>
+        </div>
+        <div class="card interest-card">
+          <h4>Computational Materials</h4>
+          <p>DFT and ML‑accelerated screening for property optimization and mechanism discovery.</p>
+          <div class="badge b-rose">Computation</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== RESEARCH OBJECTIVES ===================== -->
+  <section id="objectives" class="alt">
+    <div class="container">
+      <div class="section-head">
+        <div>
+          <h3 class="section-title">Research Objectives</h3>
+          <p class="section-sub">What we aim to achieve in the next 3–5 years.</p>
+        </div>
+        <span class="tag">Roadmap</span>
+      </div>
+
+      <div class="grid" style="grid-template-columns: repeat(2, 1fr);">
+        <div class="card objective">
+          <i>1</i>
+          <div>
+            <h4>Device‑grade stability in perovskite photovoltaics</h4>
+            <p>Realize >2,000 h operational stability via defect passivation, compositional engineering, and encapsulation.</p>
+          </div>
+        </div>
+        <div class="card objective">
+          <i>2</i>
+          <div>
+            <h4>Entropy‑engineered catalysts</h4>
+            <p>Leverage high‑entropy design to minimize overpotentials in HER/OER with Earth‑abundant elements.</p>
+          </div>
+        </div>
+        <div class="card objective">
+          <i>3</i>
+          <div>
+            <h4>Safe solid‑state batteries</h4>
+            <p>Design ionically conductive, mechanically robust electrolytes and stable interfaces for high‑rate cycling.</p>
+          </div>
+        </div>
+        <div class="card objective">
+          <i>4</i>
+          <div>
+            <h4>Open science & training</h4>
+            <p>Publish datasets, open‑source analysis code, and deliver hands‑on workshops for students and partners.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="stats" style="margin-top:22px;">
+        <div class="stat"><h2>50+ </h2><p>Publications</p></div>
+        <div class="stat"><h2>6 </h2><p>Active Grants</p></div>
+        <div class="stat"><h2>20+ </h2><p>Team Members</p></div>
+        <div class="stat"><h2>10k+ </h2><p>Samples analyzed</p></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== FUNDING / FINANCIAL SUPPORTS ===================== -->
+  <section id="funding">
+    <div class="container">
+      <div class="section-head">
+        <div>
+          <h3 class="section-title">Financial Supports & Collaborations</h3>
+          <p class="section-sub">We gratefully acknowledge support from national funding agencies and industry partners.</p>
+        </div>
+        <span class="tag">Sponsors</span>
+      </div>
+
+      <div class="funding-grid" aria-label="Funding logos">
+        <!-- Replace placeholder logos with actual PNG/SVG paths -->
+        <div class="funder"><img src="dst-logo.png" alt="DST" /><p>Department of Science & Technology (DST)</p></div>
+        <div class="funder"><img src="serb-logo.png" alt="SERB" /><p>Science & Engineering Research Board (SERB)</p></div>
+        <div class="funder"><img src="ugc-logo.png" alt="UGC" /><p>University Grants Commission (UGC)</p></div>
+        <div class="funder"><img src="industry-logo.png" alt="Industry Partner" /><p>Industry Collaborations</p></div>
+      </div>
+
+      <details class="acc" style="margin-top:18px;">
+        <summary>How to acknowledge FEMRL support in your publications?</summary>
+        <p>Please include the lab name, department, and university; cite the grant number when applicable.</p>
+      </details>
+    </div>
+  </section>
+
+  <!-- ===================== FAQ / Newsletter (useful extras) ===================== -->
+  <section id="extras" class="alt">
+    <div class="container">
+      <div class="section-head">
+        <div>
+          <h3 class="section-title">FAQ & Newsletter</h3>
+          <p class="section-sub">A couple of quick answers and a way to stay in touch.</p>
+        </div>
+        <span class="tag">Extras</span>
+      </div>
+
+      <div class="grid" style="grid-template-columns: 2fr 1fr;">
+        <div>
+          <div class="accordion">
+            <details class="acc"><summary>Do you host visiting students?</summary><p>Yes—see <a href="projects.html">open positions</a> for internship calls and eligibility.</p></details>
+            <details class="acc"><summary>Can external users access the facilities?</summary><p>Subject to availability and safety training. See <a href="facilities.html">Facility access</a>.</p></details>
+            <details class="acc"><summary>Where can I find datasets or code?</summary><p>Selected resources are linked under <a href="publications.html">Publications</a>.</p></details>
+          </div>
+        </div>
+       
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== FOOTER ===================== -->
+  <footer>
+    <div class="container">
+      <div class="footer-grid">
+        <div class="foot">
+          <h4>FEMRL • Central University of South Bihar</h4>
+          <p>A research hub advancing functional & energy materials through physics‑driven design and experimentation.</p>
+        </div>
+        <div class="foot">
+          <h4>Explore</h4>
+          <ul>
+            <li><a href="research.html">Research</a></li>
+            <li><a href="facilities.html">Facilities</a></li>
+            <li><a href="publications.html">Publications</a></li>
+          </ul>
+        </div>
+        <div class="foot">
+          <h4>Engage</h4>
+          <ul>
+            <li><a href="projects.html">Open Positions</a></li>
+            <li><a href="events.html">Workshops</a></li>
+            <li><a href="events.html">Outreach</a></li>
+          </ul>
+        </div>
+        <div class="foot">
+          <h4>Connect</h4>
+          <ul>
+            <li><a href="contact.html">Contact</a></li>
+            <li><a href="#">Twitter/X</a></li>
+            <li><a href="#">LinkedIn</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="copyright">
+        <span>© <span id="year"></span> FEMRL • Department of Physics, CUSB Gaya</span>
+        <span>Made with ♥ for science and education</span>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ===================== SCRIPTS ===================== -->
+  <script>
+    // Multicolor active menu on click (home only has in‑page anchor)
+    document.querySelectorAll('nav.menu a').forEach(a => {
+      a.addEventListener('click', (e) => {
+        if (a.getAttribute('href') === '#home') {
+          e.preventDefault();
+          document.getElementById('home').scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+        document.querySelectorAll('nav.menu a').forEach(x => x.classList.remove('active'));
+        a.classList.add('active');
+      });
+    });
+
+    // Back-to-top button
+    const backTop = document.createElement('button');
+    backTop.textContent = '↑';
+    backTop.title = 'Back to top';
+    Object.assign(backTop.style, { position:'fixed', right:'16px', bottom:'18px', height:'46px', width:'46px', borderRadius:'14px', border:'1px solid rgba(17,24,39,.12)', background:'linear-gradient(135deg, var(--brand), var(--brand-2))', color:'#fff', fontWeight:'800', boxShadow:'var(--shadow)', display:'none', cursor:'pointer', zIndex:60 });
+    document.body.appendChild(backTop);
+    backTop.addEventListener('click', () => window.scrollTo({top:0, behavior:'smooth'}));
+    window.addEventListener('scroll', () => { backTop.style.display = window.scrollY > 500 ? 'block' : 'none'; });
+
+    // Search filters News by keywords and type
+    const searchInput = document.getElementById('site-search');
+    const searchBtn = document.getElementById('searchBtn');
+    const btnAll = document.getElementById('btnAll');
+    const btnHiring = document.getElementById('btnHiring');
+    const btnEvent = document.getElementById('btnEvent');
+    const btnPubs = document.getElementById('btnPubs');
+
+    function filterNews(q = '', type = ''){
+      q = (q || '').toLowerCase();
+      const items = document.querySelectorAll('#newsList .news-item');
+      let hits = 0;
+      items.forEach(it => {
+        const txt = it.innerText.toLowerCase() + ' ' + (it.dataset.keywords||'');
+        const typeOk = !type || (it.dataset.type||'').toLowerCase() === type.toLowerCase();
+        const match = (!q || txt.includes(q)) && typeOk;
+        it.style.display = match ? 'grid' : 'none';
+        if (match) hits++;
+      });
+      const mq = document.getElementById('marqueeText');
+      if(q || type){ mq.textContent = `Filter → ${type||'All'} • “${q||'—'}” • ${hits} item(s)`; }
+    }
+    searchBtn.addEventListener('click', ()=>filterNews(searchInput.value));
+    searchInput.addEventListener('keydown', (e)=>{ if(e.key==='Enter'){ filterNews(searchInput.value); }});
+    btnAll.addEventListener('click', ()=>filterNews('',''));
+    btnHiring.addEventListener('click', ()=>filterNews('', 'Hiring'));
+    btnEvent.addEventListener('click', ()=>filterNews('', 'Events'));
+    btnPubs.addEventListener('click', ()=>filterNews('', 'Publications'));
+
+    // Save/unsave news items to localStorage (bookmark)
+    document.querySelectorAll('.save-btn').forEach(btn => {
+      btn.addEventListener('click', (e) => {
+        const card = e.target.closest('.news-item');
+        const key = 'saved:' + card.querySelector('h4').textContent;
+        if(localStorage.getItem(key)) { localStorage.removeItem(key); btn.textContent = '★ Save'; btn.setAttribute('aria-label','Save news'); }
+        else { localStorage.setItem(key, card.outerHTML); btn.textContent = '✓ Saved'; btn.setAttribute('aria-label','Saved'); }
+      });
+    });
+
+    // Scroll reveal (simple, no library)
+    const revealEls = document.querySelectorAll('.card, .section-title, .stat, .acc');
+    const io = new IntersectionObserver((entries) => {
+      entries.forEach(e => { if(e.isIntersecting){ e.target.animate([{opacity:0, transform:'translateY(8px)'},{opacity:1, transform:'translateY(0)'}], {duration:500, easing:'ease-out', fill:'both'}); io.unobserve(e.target);} });
+    }, { threshold: .08 });
+    revealEls.forEach(el => io.observe(el));
+
+    // Current year
+    document.getElementById('year').textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
